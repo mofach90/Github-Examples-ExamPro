@@ -17,5 +17,5 @@ jobs:
         id: first
         run: echo "test=Taraji ya dawla"
       - name: This is my  second extention
-        run: echo "second ${{steps.first.outputs.taraji}}"
+        run: echo "second ${{steps.first.outputs.test}}"
     
