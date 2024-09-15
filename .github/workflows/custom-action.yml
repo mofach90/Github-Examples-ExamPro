@@ -9,7 +9,13 @@ jobs:
         id: hello
         uses: omenking/barsoom@0.0.6
         with:
-          name: 'Brown'
+          name: 'Taraji'
       # Use the output from the `hello` step
       - name: Get the Output
         run: echo "The time was ${{ steps.hello.outputs.greeting }}"
+      - name: This is my first extention
+        id: first
+        run: echo "Taraji ya dawla"
+      - name: This is my  second extention
+        run: echo "second ${{steps.first.outputs}}"
+      
