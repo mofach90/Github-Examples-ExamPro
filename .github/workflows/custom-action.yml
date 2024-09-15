@@ -15,7 +15,7 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.greeting }}"
       - name: This is my first extention
         id: first
-        run: echo "test=Taraji ya dawla"
+        run: echo "test=Taraji ya dawla" >> "$GITHUB_OUTPUT"
       - name: This is my  second extention
         run: echo "second ${{steps.first.outputs.test}}"
     
