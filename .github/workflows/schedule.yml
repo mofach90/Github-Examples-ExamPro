@@ -7,6 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo current time
-        run: |
-         echo "The current server time is $(date)"
-         echo "Test me"
+        run: echo "The current server time is $(date)"
