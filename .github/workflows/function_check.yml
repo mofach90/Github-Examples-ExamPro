@@ -1,0 +1,24 @@
+name: 'function check'
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name : first_step
+              run: echo "step hello 1"
+            - name: second_step
+              if : ${{success()}}
+              run: echo "step hello 2"
+               
+    second_job:
+        if: ${{needs.first_job.result == 'success'}} 
+        runs-on: ubuntu-latest
+        needs: first_job
+        steps:
+            - name : second_jobStep
+              run: echo "second step hello"
