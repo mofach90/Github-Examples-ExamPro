@@ -16,7 +16,7 @@ jobs:
               run: echo "step hello 2"
                
     second_job:
-        if: ${{needs.first_job.result == 'success'}} 
+        if: ${{needs.first_job.result != 'success'}} 
         runs-on: ubuntu-latest
         needs: first_job
         steps:
