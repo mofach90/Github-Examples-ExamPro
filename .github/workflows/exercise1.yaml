@@ -32,7 +32,13 @@ jobs:
                 
     show_echo:
         runs-on: macos-latest
+        env:
+            MY_ENV_VAR: "my env var value"
         steps:
-            - name: showing echo
+            - name: "************** showing echo ****************"
               run: echo "Hello World"
               timeout-minutes: 1
+            - name: "************** showing MY_FIRST_SECRET ****************"
+              run: echo ${{secrets.MY_FIRST_SECRET}}
+            - name: "************** showing MY_ENV_VAR ****************"
+              run: echo ${{secrets.MY_ENV_VAR}}
