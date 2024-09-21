@@ -1,0 +1,30 @@
+name: Test strategy
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test-group: [1, 2]
+        node: [14, 16]  # Node.js versions 14 and 16
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Verify Node.js installation
+        run: node --version
+
+      - name: Mock test logs
+        run: echo "Mock test logs for test group ${{ matrix.test-group }} with Node.js version ${{ matrix.node }}" > test-job-${{ strategy.job-index }}.txt
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build log for job ${{ strategy.job-index }}
+          path: test-job-${{ strategy.job-index }}.txt
