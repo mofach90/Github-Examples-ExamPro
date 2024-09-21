@@ -28,7 +28,7 @@ jobs:
             - name: install node 
               uses: actions/setup-node@v4
               with:
-                version: 16
+                node-version: 16
                 
     show_echo:
         runs-on: macos-latest
