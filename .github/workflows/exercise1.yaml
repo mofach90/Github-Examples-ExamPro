@@ -7,7 +7,15 @@
 #         Add a simple step, such as running a shell command (echo), to confirm the workflow executes successfully.
 #     Key Concepts: Workflow trigger, action from GitHub Marketplace.
 
-name: "task 1"
+# Task 2: Add a Workflow for Pull Requests
+#     Objective: Modify your workflow to trigger on both push and pull_request events.
+#     Steps:
+#         Extend the existing workflow to run when a pull request is opened or updated.
+#         Use the actions/setup-node action to install Node.js in one of the steps.
+#         Ensure the workflow runs on both push and pull request events.
+#     Key Concepts: Multiple workflow triggers, Marketplace actions.
+
+name: exercise 1
 on: [push]
 
 jobs:
@@ -17,10 +25,14 @@ jobs:
         steps:
             - name: "first step"
               uses: actions/checkout@v4
+            - name: install node 
+              uses: actions/setup-node@v4
+              with:
+                version: 16
                 
     show_echo:
         runs-on: macos-latest
         steps:
             - name: showing echo
               run: echo "Hello World"
-              timeout-minutes: 0.5
+              timeout-minutes: 1
