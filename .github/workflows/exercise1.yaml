@@ -13,11 +13,10 @@ on: [push]
 jobs:
     checkout_code:
         runs-on: ubuntu_latest
+        timeout-minutes: 0.5
         steps:
             - name: "first step"
               uses: actions/checkout@v4
-              timeout-minutes: 0.5
-              continue-on-error: true # Default is true, but only for better readibilit
                 
     show_echo:
         runs-on: macos_latest
