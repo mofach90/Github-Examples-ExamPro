@@ -39,6 +39,8 @@ jobs:
               run: echo "Hello World"
               timeout-minutes: 1
             - name: "************** showing MY_FIRST_SECRET ****************"
-              run: "echo ${{secrets.MY_FIRST_SECRET}}"
+              run: |
+                echo ${{secrets.MY_FIRST_SECRET}} >> test.txt
+                cat test.txt 
             - name: "************** showing MY_ENV_VAR ****************"
               run: echo $MY_ENV_VAR
