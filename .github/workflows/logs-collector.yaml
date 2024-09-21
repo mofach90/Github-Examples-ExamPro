@@ -1,18 +1,41 @@
 name: Build
+
 on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Build with logs
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Build with logs (Intentional failure with real errors)
         run: |
+          # Create a directory for logs
           mkdir ${{ runner.temp }}/build_logs
-          echo "Logs from building" > ${{ runner.temp }}/build_logs/build.logs
+          
+          # Log some details about the environment
+          echo "Running on runner: ${{ runner.name }}" > ${{ runner.temp }}/build_logs/build.logs
+          echo "Repository: ${{ github.repository }}" >> ${{ runner.temp }}/build_logs/build.logs
+          echo "Commit: ${{ github.sha }}" >> ${{ runner.temp }}/build_logs/build.logs
+          
+          # Simulate a real error: try to compile a non-existent file
+          echo "Attempting to compile non-existent file" >> ${{ runner.temp }}/build_logs/build.logs
+          gcc non_existent_file.c 2>> ${{ runner.temp }}/build_logs/build.logs
+          
+          # Simulate another error: try to access a non-existent file
+          echo "Attempting to access non-existent file" >> ${{ runner.temp }}/build_logs/build.logs
+          cat non_existent_file.txt 2>> ${{ runner.temp }}/build_logs/build.logs
+          
+          # Simulate another error: listing a non-existent directory
+          echo "Listing non-existent directory" >> ${{ runner.temp }}/build_logs/build.logs
+          ls /non_existent_directory 2>> ${{ runner.temp }}/build_logs/build.logs
+          
+          # Force failure
           exit 1
+      
       - name: Upload logs on fail
-        if: ${{ always() }}
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v4
         with:
           name: Build failure logs
