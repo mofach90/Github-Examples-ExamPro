@@ -16,7 +16,7 @@
 #     Key Concepts: Multiple workflow triggers, Marketplace actions.
 
 name: exercise 1
-on: [push]
+on: [push, pull_request]
 
 jobs:
     checkout_code:
