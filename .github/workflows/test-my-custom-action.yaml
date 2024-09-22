@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: mofach90/example-1-javascript-github-action@v0.1
+        uses: mofach90/example-1-javascript-github-action@v0.2
         with:
           who-to-greet: 'Taraji ya Dawla'
       # Use the output from the `hello` step
