@@ -10,7 +10,7 @@ jobs:
         strategy:
             matrix:
                 environement: [dev,prod,test]
-                os: [windows_latest, ubuntu_latest]
+                os: [windows-latest, ubuntu-latest]
         runs-on: ${{matrix.os}}
         outputs:
             envirenment: ${{steps.first.envirenment}}
