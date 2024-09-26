@@ -10,10 +10,9 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{matrix.envirenment}}    
         steps:
-            - name: the envirenemnt secret 
-              run: echo ${{secrets}}
+
             - name: the envirenemnt variable 
-              run: echo ${{vars.environment}}
+              run: echo ${{vars.MY_VAR}}
             
     
             
