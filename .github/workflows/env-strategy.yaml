@@ -1,0 +1,19 @@
+name: envirenment strategy
+
+on: [push]
+
+jobs:
+    first-job:
+        strategy:
+            matrix:
+                envirenment: [dev, prod, test]
+        runs-on: ubuntu-latest
+        environment: ${{matrix.envirenment}}    
+        steps:
+            - name: the envirenemnt secret 
+              run: echo ${{secrets[format('{}_ENV_SECRET', matrix.envirenment )]}}
+            - name: the envirenemnt variable 
+              run: echo ${{vars.environment}}
+            
+    
+            
