@@ -1,0 +1,15 @@
+name: matrix-example
+
+on:
+    push:
+        branches:
+            - main
+jobs:
+    my_first-job:
+        strategy:
+            matrix:
+                os: [windows-latest, ubuntu-latest, macos-latest]
+        runs-on: ${{matrix.os}}
+        steps:
+            - name: first step
+              run: echo 'hello world' from ${{matrix.os}}
