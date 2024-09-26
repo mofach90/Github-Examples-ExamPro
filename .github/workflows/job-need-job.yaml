@@ -1,0 +1,31 @@
+name: job need job
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    first_job:
+        strategy:
+            matrix:
+                environement: [dev,prod,test]
+                os: [windows_latest, ubuntu_latest]
+        runs-on: ${{matrix.os}}
+        outputs:
+            envirenment: ${{steps.first.envirenment}}
+            os: ${{steps.first.os}}
+        steps:
+            - name: first
+              id: first
+              run: |
+                echo "envirenment=${{matrix.environement}}" >> "$GITHUB_OUTPUT"
+                echo "os=${{matrix.os}}" >> "$GITHUB_OUTPUT"
+
+    second_job:
+        needs: first_job
+        runs-on: ${{needs.first_job.os}}
+        steps:
+            - name: second job step
+              run: echo ${{needs.first_job.outputs.envirenment}}
+              
