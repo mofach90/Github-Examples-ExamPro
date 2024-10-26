@@ -22,7 +22,8 @@ jobs:
         run: echo "run test"
   test:
     needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Message
-        run: echo "Tests passed! Proceeding to the next job."
+    uses: ./reusable-workflow.yml
+    with:
+      node-version: 21
+    secrets:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
