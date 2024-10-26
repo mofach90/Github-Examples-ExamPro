@@ -6,9 +6,9 @@ on:
             node-version:
                 required: true
                 type: string
-        secrets:
-            github-token:
-                required: true
+        # secrets:
+        #     github-token:
+        #         required: true
 jobs:
     test:
         runs-on: ubuntu-latest
