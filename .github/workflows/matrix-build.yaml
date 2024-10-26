@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: echo "Install dependencies"
       - name: Run tests
-        run: echo "run test "
+        run: echo "run test  "
   test:
     needs: build
     uses: mo-org-free/org-shared-workflows/.github/workflows/reusable-org-workflow.yml@v0.0
