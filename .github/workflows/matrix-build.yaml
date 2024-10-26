@@ -26,4 +26,4 @@ jobs:
     with:
       node-version: 21
     secrets:
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      github-token: ${{secrets.GITHUB_TOKEN}}
