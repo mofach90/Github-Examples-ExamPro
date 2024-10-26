@@ -22,7 +22,7 @@ jobs:
         run: echo "run test "
   test:
     needs: build
-    uses: ./.github/workflows/reusable-workflow.yml
+    uses: mo-org-free/org-shared-workflows/.github/workflows/reusable-org-workflow.yml@main
     with:
       node-version: 21
     # secrets:
